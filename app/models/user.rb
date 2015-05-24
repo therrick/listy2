@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
+  validates :email, presence: true, uniqueness: true
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, if: :new_record?
+  has_many :stores
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
