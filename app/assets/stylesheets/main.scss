@@ -1,0 +1,21 @@
+// import the CSS framework
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+main {
+  @extend .container;
+  background-color: #eee;
+  padding-bottom: 80px;
+  width: 100%;
+  margin-top: 51px; // accommodate the navbar
+}
+
+.button-xs {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-xs;
+}
+.button {
+  @extend .btn;
+  @extend .btn-primary;
+}
