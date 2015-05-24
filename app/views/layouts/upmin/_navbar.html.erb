@@ -1,0 +1,30 @@
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= main_app.root_path %>">
+        Home
+      </a>
+      <button class="navbar-toggle" data-target="#navbar-main" data-toggle="collapse" type="button">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="<%= root_path %>">
+            Upmin
+          </a>
+        </li>
+        <% Upmin::Model.all.each do |m| %>
+          <li>
+            <a href="<%= m.search_path %>">
+              <%= m.humanized_name(:plural) %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
