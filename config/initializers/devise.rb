@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '5826373e4f772d10c68a73bc40f747d3fe99354dac6a1c76c2eaf1dc8478c58af551a49d01cabc68acb9b253ab77f76a1e2041fafa232730fcc25c25c54ff248'
+  # config.secret_key = '5826373e4f...'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -99,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'd38269569384a1786dc0d82fae0be159b88b3d7c725a21fddc87a0b846329dfe7904142a58c1ea3e9ded9646ef214e8c9e965092f2abb57720da2599283740a6'
+  # config.pepper = 'd3826...'
 
   # ==> Configuration for :invitable
   # The period the generated invitation token is valid, after
