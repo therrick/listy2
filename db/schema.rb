@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524140459) do
+ActiveRecord::Schema.define(version: 20150524181407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aisles", force: :cascade do |t|
+    t.integer  "store_id"
+    t.string   "name"
+    t.string   "description"
+    t.integer  "position"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "aisles", ["store_id"], name: "index_aisles_on_store_id", using: :btree
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "store_id"
+    t.integer  "aisle_id"
+    t.string   "name"
+    t.string   "notes"
+    t.integer  "number_needed"
+    t.integer  "popularity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "items", ["aisle_id"], name: "index_items_on_aisle_id", using: :btree
+  add_index "items", ["store_id"], name: "index_items_on_store_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
     t.integer  "user_id"
@@ -61,5 +86,8 @@ ActiveRecord::Schema.define(version: 20150524140459) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "aisles", "stores"
+  add_foreign_key "items", "aisles"
+  add_foreign_key "items", "stores"
   add_foreign_key "stores", "users"
 end
