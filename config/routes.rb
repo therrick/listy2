@@ -8,16 +8,16 @@ Rails.application.routes.draw do
   end
 
   resources :stores do
-    post :mark_all_purchased, :on => :member
+    post :mark_all_purchased, on: :member
     resources :aisles do
-      post :sort, :on => :collection
-      post :move_up, :on => :member
+      post :sort, on: :collection
+      post :move_up, on: :member
     end
     resources :items do
-      post :mark_purchased, :on => :member
-      get :undo_purchase, :on => :member
-      post :add_needed, :on => :member
-      post :subtract_needed, :on => :member
+      post :mark_purchased, on: :member
+      get :undo_purchase, on: :member
+      post :add_needed, on: :member
+      post :subtract_needed, on: :member
     end
   end
 

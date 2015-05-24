@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.items.build(item_params, )
+    @item = current_user.items.build(item_params)
     flash[:notice] = 'Successfully created item' if @item.save
     respond_with(@item)
   end
