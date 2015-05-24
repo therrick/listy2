@@ -1,29 +1,11 @@
-<h1>My Stores</h1>
+<h1>Stores</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @stores.each do |store| %>
-      <tr>
-        <td><%= link_to store.name, store %></td>
-        <td><%= link_to 'Edit', edit_store_path(store) %></td>
-        <td><%= link_to 'Delete',
-                        store,
-                        method: :delete,
-                        data: { confirm: 'This will delete the store and all its aisles and ' \
-                        'products. Are you sure?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul>
+  <% @stores.each do |store| %>
+    <li><%= link_to store.name, store %></li>
+  <% end %>
+</ul>
 
 <br>
 
-<%= link_to 'New Store', new_store_path %>
+<%= link_to 'New Store', new_store_path, class: 'btn btn-primary' %>
