@@ -14,6 +14,8 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 gem 'bootstrap-sass'
+gem 'bootswatch-rails'
+gem 'font-awesome-rails'
 gem 'devise'
 gem 'devise_invitable'
 gem 'pg'
