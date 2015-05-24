@@ -2,6 +2,10 @@
 @import "bootstrap-sprockets";
 @import "bootswatch/yeti/variables";
 @import "bootstrap";
+
+$font-size-base: 18px !default;
+$font-size-small: 16px;
+
 @import "bootswatch/yeti/bootswatch";
 
 // vendor additions

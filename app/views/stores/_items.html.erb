@@ -1,0 +1,11 @@
+<table class="table">
+  <tr id="item_table_headings">
+    <th></th>
+    <th>item <%= sort_link %></th>
+    <th>aisle</th>
+    <th>notes</th>
+    <th></th>
+  </tr>
+  <%= render :partial => "list_item", :collection => @list_items %>
+  <%= render :partial => "other_item", :collection => @other_items %>
+</table>

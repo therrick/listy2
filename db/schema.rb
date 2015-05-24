@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 20150524181407) do
     t.integer  "aisle_id"
     t.string   "name"
     t.string   "notes"
-    t.integer  "number_needed"
-    t.integer  "popularity"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "number_needed", default: 0
+    t.integer  "popularity",    default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "items", ["aisle_id"], name: "index_items_on_aisle_id", using: :btree

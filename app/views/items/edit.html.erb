@@ -1,0 +1,14 @@
+<h2>edit <%= @item.name %></h2>
+
+<%= simple_form_for [@store, @item] do |f| %>
+  <% if @store.aisles.length > 0 %>
+    <%= f.input :aisle, :collection => @store.aisles %>
+  <% end %>
+  <%= f.input :name %>
+  <%= f.input :number_needed %>
+  <%= f.input :notes %>
+  <%= f.input :popularity %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'cancel', store_path(@store.id) %>

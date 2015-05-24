@@ -1,19 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @store.user %>
-</p>
-
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @store.name %>
-</p>
+</h1>
+<ul class="submenu">
+  <li class="first"><%= link_to 'edit aisles', store_aisles_path(@store.id), class: 'subtitle' %></li>
+  <li><%= link_to 'mark all purchased',
+                  mark_all_purchased_store_path(@store.id),
+                  class: 'subtitle',
+                  method: :post,
+                  data: { confirm: 'are you sure you want to mark all items purchased?' } %></li>
+</ul>
 
-<p>
-  <strong>Hidden:</strong>
-  <%= @store.hidden %>
-</p>
 
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+<div id="items_list">
+  <%= render 'add_item_form' %>
+  <br/>
+  <div id="items"><%= render 'items' %></div>
+
+</div>

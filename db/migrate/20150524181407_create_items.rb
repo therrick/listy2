@@ -5,8 +5,8 @@ class CreateItems < ActiveRecord::Migration
       t.belongs_to :aisle, index: true, foreign_key: true
       t.string :name
       t.string :notes
-      t.integer :number_needed
-      t.integer :popularity
+      t.integer :number_needed, default: 0
+      t.integer :popularity, default: 0
 
       t.timestamps null: false
     end
