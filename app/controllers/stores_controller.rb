@@ -11,6 +11,7 @@ class StoresController < ApplicationController
   def show
     @list_items = @store.items.needed.order_by_aisles
     @other_items = @store.items.not_needed
+    @other_items = apply_sort(@other_items)
     respond_with @store
   end
 
@@ -59,5 +60,15 @@ class StoresController < ApplicationController
 
   def store_params
     params.require(:store).permit(:name, :hidden)
+  end
+
+  def apply_sort(items)
+    session[:sort] = 'pop' if params[:sort] == 'pop'
+    session[:sort] = 'name' if params[:sort] == 'name'
+    if session[:sort] == 'pop'
+      items.order('items.popularity DESC')
+    else
+      items.order('items.name')
+    end
   end
 end

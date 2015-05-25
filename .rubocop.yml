@@ -12,5 +12,7 @@ AllCops:
     - 'log/**/*'
 Metrics/LineLength:
   Max: 99
+Metrics/AbcSize:
+  Max: 20
 Documentation:
   Enabled: false
