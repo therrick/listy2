@@ -1,0 +1,17 @@
+body.aisles {
+  ul#aisles-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    li span.name {
+      @extend .col-sm-2;
+    }
+    li span.description {
+      @extend .col-sm-8;
+    }
+    li span.other_actions {
+      @extend .col-sm-4;
+    }
+  }
+  .handle:hover{cursor: move;}
+}

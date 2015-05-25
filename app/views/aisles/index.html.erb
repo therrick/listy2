@@ -1,0 +1,30 @@
+<h1><%= @store.name %> aisles</h1>
+<ul class="submenu">
+  <li class="first"><%= link_to "back to #{@store.name}", store_path(@store.id), :class => 'subtitle' %></li>
+</ul>
+
+<%= render "add_aisle_form" %>
+<br/>
+<ul id="aisles-list">
+  <% @aisles.each do |aisle| %>
+    <li id="aisle_<%= aisle.id %>">
+      <span class="name">
+        <%= aisle.name %>
+      </span>
+      <span class="description">
+        <%= aisle.description %>&nbsp;
+      </span>
+      <span class="other_actions">
+        <span class="handle"><%= fa_icon('sort') %></span>
+        <span class="up"><%= link_to fa_icon('sort-up'),
+                                move_up_store_aisle_path(@store.id, aisle), :method => :post %></span>
+        <span class="edit"><%= link_to fa_icon('edit'),
+                                  edit_store_aisle_path(@store.id, aisle) %></span>
+        <span class="delete"><%= link_to fa_icon('trash'),
+                                    store_aisle_path(@store.id, aisle),       
+                                    :confirm => 'are you sure?', :method => :delete %></span>
+      </span>
+      <div style="clear:both"></div>
+    </li>
+  <% end %>
+</ul>

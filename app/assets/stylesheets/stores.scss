@@ -1,3 +1,24 @@
-// Place all the styles related to the stores controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body.stores {
+  div#items_list {
+    tr {
+      td.action {
+        width : 20px;
+      }
+      td.name {
+        width : 140px;
+      }
+      td.aisle {
+        width : 40px;
+        font-size: .8em;
+      }
+      td.notes {
+        width : 140px;
+        font-size: .8em;
+      }
+      td.more_actions {
+        width : 40px;
+      }
+    }
+    .sort_link {font-size: .7em; }
+  }
+}

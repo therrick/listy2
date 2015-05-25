@@ -4,7 +4,7 @@
     <%= hidden_field_tag :sort, params[:sort] %>  
 <% end %>
 
-<%= form_for [@store, @item] do |f| %>
+<%= form_for [@store, Item.new] do |f| %>
   <%= f.text_field :name, :autocomplete => :off, :size => 15 %>
   <%= submit_tag "add new item" %>
 <% end %>
