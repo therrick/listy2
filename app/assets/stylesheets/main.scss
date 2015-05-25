@@ -13,6 +13,13 @@ main {
   @extend .btn-primary;
 }
 
-.thumb-friendly {
-  font-size: 1.5em;
+h1.with_submenu {
+  float: left;
+}
+ul.submenu {
+  margin-top: 25px;
+  float: right;
+}
+.clear {
+  clear: both;
 }

@@ -1,4 +1,4 @@
-<h1>
+<h1 class="with_submenu">
   <%= @store.name %>
 </h1>
 <ul class="submenu">
@@ -9,7 +9,7 @@
                   method: :post,
                   data: { confirm: 'are you sure you want to mark all items purchased?' } %></li>
 </ul>
-
+<div class="clear"></div>
 
 <div id="items_list">
   <%= render 'add_item_form' %>
