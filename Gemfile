@@ -24,7 +24,7 @@ gem 'puma'
 gem 'simple_form'
 gem 'upmin-admin'
 group :development do
-  gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler', require: false
   gem 'better_errors'
   gem 'foreman'
   gem 'hub', require: nil
