@@ -5,7 +5,7 @@ class AislesController < ApplicationController
   before_action :set_aisle, only: [:show, :edit, :update, :destroy]
 
   def index
-    @aisles = @store.aisles
+    @aisles = @store.aisles.order(:position)
     respond_with @aisles
   end
 
@@ -70,7 +70,6 @@ class AislesController < ApplicationController
     aisles = @store.aisles
     aisles.each do |aisle|
       aisle.position = params['aisle'].index(aisle.id.to_s) + 1
-      print ("position: #{aisle.position}\n")
       aisle.save!
     end
     render :nothing => true

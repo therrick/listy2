@@ -13,6 +13,7 @@ group :development, :test do
   gem 'spring'
   gem 'dotenv-rails'
 end
+gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'font-awesome-rails'

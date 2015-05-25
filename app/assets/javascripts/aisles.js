@@ -22,7 +22,7 @@ $(document).ready( function () {
             complete: function(request){
               $('#aisles-list').effect('highlight');
             },
-            url: '/stores/<%=@store.id%>/aisles/sort'})
+            url: 'aisles/sort'})
         }
       })
 });

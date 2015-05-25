@@ -4,13 +4,13 @@ body.aisles {
     padding: 0;
     list-style-type: none;
     li span.name {
-      @extend .col-sm-2;
+      @extend .col-sm-3;
     }
     li span.description {
-      @extend .col-sm-8;
+      @extend .col-sm-7;
     }
     li span.other_actions {
-      @extend .col-sm-4;
+      @extend .col-sm-2;
     }
   }
   .handle:hover{cursor: move;}

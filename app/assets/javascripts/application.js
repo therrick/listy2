@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
@@ -65,7 +66,7 @@ var delay = (function(){
 
 // sort with ajax and keep other forms updated with appropriate sort params
 $(function () {
-  $('#items th a').live('click',
+  $('#items th a').on('click', 'a',
       function () {
         if (this.href.search("pop") > -1) {
           $('#items_search input#sort').val("pop")
