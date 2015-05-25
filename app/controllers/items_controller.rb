@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
 
   def find_or_create_item_with_notice
     item = Item.find_or_initialize_by(store: @store.id, name: item_params[:name])
-    item.number_needed = @item.number_needed + 1
+    item.number_needed = item.number_needed + 1
     if item.new_record?
       notice =  "#{item.name} was created"
     else
