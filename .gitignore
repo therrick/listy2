@@ -78,3 +78,6 @@ pickle-email-*.html
 .env
 .powenv
 production.env
+
+# prod_seeds
+db/prod_seeds.rb
