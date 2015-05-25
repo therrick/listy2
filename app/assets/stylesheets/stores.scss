@@ -21,4 +21,9 @@ body.stores {
     }
     .sort_link {font-size: .7em; }
   }
+  tr.item_table_headings th { background-color: #ddd; }
+  tr.even td { background-color: #E7FFE7; }
+  tr.needed td { background-color: #fff; }
+  tr.not_needed td { background-color: #eee; }
+  th { border-bottom: 1px solid #777; }
 }
