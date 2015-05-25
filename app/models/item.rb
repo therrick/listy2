@@ -4,10 +4,13 @@ class Item < ActiveRecord::Base
   validates :store, presence: true
   validates :name, presence: true, uniqueness: { scope: :store_id }
 
-  scope :name_search, ->(term) { where('items.name like ?', "%#{term}%") }
-  scope :needed, -> { where('items.number_needed > 0') }
-  scope :not_needed, -> { where('items.number_needed = 0') }
+  scope :needed, -> { includes(:aisle).where('items.number_needed > 0') }
+  scope :not_needed, -> { includes(:aisle).where('items.number_needed = 0') }
   scope :order_by_aisles, -> { includes(:aisle).order('aisles.position, items.name') }
+
+  def aisle_name
+    aisle.nil? ? '-' : aisle.name
+  end
 
   def increment_needed
     self.number_needed += 1

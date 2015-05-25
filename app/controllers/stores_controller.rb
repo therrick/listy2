@@ -9,8 +9,8 @@ class StoresController < ApplicationController
   end
 
   def show
-    @list_items = @store.items.name_search(params[:search]).needed.order_by_aisles
-    @other_items = @store.items.name_search(params[:search]).not_needed
+    @list_items = @store.items.needed.order_by_aisles
+    @other_items = @store.items.not_needed
     respond_with @store
   end
 
