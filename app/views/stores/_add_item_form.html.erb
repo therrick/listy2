@@ -1,4 +1,13 @@
-<%= form_for [@store, Item.new] do |f| %>
-  <%= f.text_field :name, autocomplete: :off, size: 15 %>
-  <%= submit_tag "add new item" %>
+<%= simple_form_for [@store, Item.new] do |f| %>
+  <div class="row">
+    <div class="col-sm-5">
+      <%= f.input :name,
+                  label: false,
+                  placeholder: 'Add/Search',
+                  input_html: { autocomplete: :off } %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.submit "add item", class: "button" %>
+    </div>
+  </div>
 <% end %>
