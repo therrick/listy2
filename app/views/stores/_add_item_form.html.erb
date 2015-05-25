@@ -1,12 +1,12 @@
 <%= simple_form_for [@store, Item.new] do |f| %>
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-5 col-xs-8">
       <%= f.input :name,
                   label: false,
                   placeholder: 'Add/Search',
                   input_html: { autocomplete: :off } %>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-xs-4">
       <%= f.submit "add item", class: "button" %>
     </div>
   </div>
