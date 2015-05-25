@@ -40,12 +40,14 @@ class AislesController < ApplicationController
     respond_with(@aisle)
   end
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def move_up
     # TODO: maybe refactor this to use acts-as-list or ranked-model
     aisles = @store.aisles
 
     # first, compact everything back down to 1-n in case a delete or something got it out of whack
-    aisles.sort! { |a,b| a.position <=> b.position }
+    aisles.sort! { |a, b| a.position <=> b.position }
     aisles.each_with_index do |aisle, i|
       aisle.position = i + 1
       aisle.save!
@@ -58,13 +60,15 @@ class AislesController < ApplicationController
       @aisle.save!
       aisles.each do |aisle|
         aisle.position += 1 if aisle != @aisle &&
-          aisle.position >= @aisle.position &&
-          aisle.position <= original_position
+                               aisle.position >= @aisle.position &&
+                               aisle.position <= original_position
         aisle.save!
       end
     end
     redirect_to(store_aisles_url(@store.id))
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   def sort
     aisles = @store.aisles
@@ -72,7 +76,7 @@ class AislesController < ApplicationController
       aisle.position = params['aisle'].index(aisle.id.to_s) + 1
       aisle.save!
     end
-    render :nothing => true
+    render nothing: true
   end
 
   private
