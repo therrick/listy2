@@ -5,6 +5,4 @@ class ApplicationController < ActionController::Base
   before_action lambda {
     flash.now[:notice] = flash[:notice].html_safe if flash[:html_safe] && flash[:notice]
   }
-  # TODO: remove after profiling in production
-  before_action -> { Rack::MiniProfiler.authorize_request }
 end

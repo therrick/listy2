@@ -23,9 +23,8 @@ gem 'pg'
 gem 'puma'
 gem 'simple_form'
 gem 'upmin-admin'
-gem 'rack-mini-profiler', require: false
 group :development do
-  #gem 'rack-mini-profiler', require: false
+  gem 'rack-mini-profiler', require: false
   gem 'better_errors'
   gem 'foreman'
   gem 'hub', require: nil
