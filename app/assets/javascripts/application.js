@@ -16,12 +16,3 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-
-// Return boolean TRUE/FALSE
-function isIOS(){
-  return (
-  (navigator.platform.indexOf("iPhone") != -1) ||
-  (navigator.platform.indexOf("iPad") != -1) ||
-  (navigator.platform.indexOf("iPod") != -1)
-  );
-}

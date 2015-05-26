@@ -1,5 +1,5 @@
 $(document).ready( function () {
-  if (isIOS()) {
+  if (isMobile.any()) {
     $('.handle').hide();
   } else {
     $('.up').hide();

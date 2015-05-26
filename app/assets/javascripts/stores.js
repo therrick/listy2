@@ -6,6 +6,9 @@ $(document).ready( function () {
   // add item form doubles as an ajax search form.
   $('input#item_name').keyup(function () {
     delay(function () {
+      if (isXS()) {
+        $('input#item_name').goTo();
+      }
       filter_items('.item_list', $('input#item_name').val());
     }, 500);
     return false;
