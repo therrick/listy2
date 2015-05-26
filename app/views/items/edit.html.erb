@@ -1,8 +1,8 @@
 <h2>edit <%= @item.name %></h2>
 
-<%= simple_form_for [@store, Item.new] do |f| %>
+<%= simple_form_for [@store, @item] do |f| %>
   <% if @store.aisles.length > 0 %>
-    <%= f.input :aisle, :collection => @store.aisles %>
+    <%= f.association :aisle, collection: @store.aisles, label_method: :name_and_description %>
   <% end %>
   <%= f.input :name %>
   <%= f.input :number_needed %>
