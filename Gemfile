@@ -16,6 +16,7 @@ end
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
+gem 'bootstrap-modal-rails'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'devise_invitable'

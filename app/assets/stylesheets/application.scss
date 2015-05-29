@@ -10,6 +10,8 @@ $font-size-small: 16px;
 
 // vendor additions
 @import "font-awesome";
+@import "bootstrap-modal-bs3patch";
+@import "bootstrap-modal";
 
 // our css
 @import 'auth';
