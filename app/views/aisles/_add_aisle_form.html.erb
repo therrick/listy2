@@ -1,5 +1,13 @@
 <%= simple_form_for [@store, Aisle.new] do |f| %>
-  <%= f.input :name, :label => 'name' %>
-  <%= f.input :description, :label => 'desc.' %>
-  <%= f.submit 'add new aisle' %>
+<div class="row">
+  <div class="col4">
+    <%= f.input :name, placeholder: 'new aisle name', label: false %>
+  </div>
+  <div class="col4">
+  <%= f.input :description, placeholder: 'new aisle description', label: false %>
+  </div>
+  <div class="col4">
+  <%= f.submit 'add new aisle', class: 'button' %>
+  </div>
+</div>
 <% end %>

@@ -3,6 +3,19 @@ main {
   margin-top: 41px; // accommodate the navbar
 }
 
+.col1 { @extend .col-sm-1; }
+.col2 { @extend .col-sm-2; }
+.col3 { @extend .col-sm-3; }
+.col4 { @extend .col-sm-4; }
+.col5 { @extend .col-sm-5; }
+.col6 { @extend .col-sm-6; }
+.col7 { @extend .col-sm-7; }
+.col8 { @extend .col-sm-8; }
+.col9 { @extend .col-sm-9; }
+.col10 { @extend .col-sm-10; }
+.col11 { @extend .col-sm-11; }
+.col12 { @extend .col-sm-12; }
+
 .button-xs {
   @extend .btn;
   @extend .btn-primary;
