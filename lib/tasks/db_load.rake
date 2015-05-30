@@ -1,5 +1,5 @@
 namespace :db do
-  namespace :populate do
+  namespace :load do
     desc 'Add all test data'
     task test_data: [:test_stores, :test_aisles, :test_items]
 
