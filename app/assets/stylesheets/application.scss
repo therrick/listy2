@@ -1,4 +1,6 @@
 // the CSS framework & bootswatch theme
+$grid-float-breakpoint: 400px; // basically, never collapse
+
 @import "bootstrap-sprockets";
 @import "bootswatch/yeti/variables";
 @import "bootstrap";

@@ -29,7 +29,7 @@ main {
 h1.with_submenu {
   float: left;
 }
-ul.submenu {
+.submenu {
   margin-top: 25px;
   float: right;
 }
@@ -45,4 +45,15 @@ ul.submenu {
     color: lightblue;
     text-decoration: underline;
   }
+}
+
+.form-actions {
+  input {
+    @extend .button;
+    margin-bottom: 10px;
+  }
+}
+
+.navbar .dropdown-menu > li > a, .navbar .dropdown-menu > li > a:focus {
+  font-size: 1.2em;
 }

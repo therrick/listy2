@@ -1,14 +1,13 @@
 <h1 class="with_submenu">
   <%= @store.name %>
 </h1>
-<ul class="submenu">
-  <li class="first"><%= link_to 'edit aisles', store_aisles_path(@store.id), class: 'subtitle' %></li>
-  <li><%= link_to 'mark all purchased',
-                  mark_all_purchased_store_path(@store.id),
-                  class: 'subtitle',
-                  method: :post,
-                  data: { confirm: 'are you sure you want to mark all items purchased?' } %></li>
-</ul>
+<div class="submenu">
+  <%= link_to fa_icon_with_text('check-circle-o', 'mark all purchased'),
+              mark_all_purchased_store_path(@store.id),
+              class: 'subtitle',
+              method: :post,
+              data: { confirm: 'are you sure you want to mark all items purchased?' } %>
+</div>
 <div class="clear"></div>
 
 <div id="items_list">

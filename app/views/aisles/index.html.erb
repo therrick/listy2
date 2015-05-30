@@ -1,7 +1,8 @@
 <h1 class="with_submenu"><%= @store.name %> aisles</h1>
-<ul class="submenu">
-  <li class="first"><%= link_to "back to #{@store.name}", store_path(@store.id), :class => 'subtitle' %></li>
-</ul>
+<div class="submenu">
+  <%= link_to fa_icon_with_text('chevron-circle-left', "back to #{@store.name}"),
+              store_path(@store.id), :class => 'subtitle' %>
+</div>
 <div class="clear"></div>
 
 <%= render "add_aisle_form" %>
