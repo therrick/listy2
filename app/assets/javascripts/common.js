@@ -27,7 +27,6 @@ function isXS(){
   );
 }
 
-
 // $(element).goTo will scroll element to top of screen
 (function($) {
   $.fn.goTo = function() {
@@ -37,3 +36,9 @@ function isXS(){
     return this; // for chaining...
   }
 })(jQuery);
+
+// clicking links should give immediate feedback
+$('a').click(function () {
+  $(this).fadeTo(100,0.2).delay(4000).fadeTo(100,1.0);
+});
+
