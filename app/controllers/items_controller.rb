@@ -56,6 +56,10 @@ class ItemsController < ApplicationController
     redirect_to store_path(@store.id)
   end
 
+  def menu_popup
+    render layout: false
+  end
+
   private
 
   def set_store

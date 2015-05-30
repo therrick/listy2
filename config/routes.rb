@@ -14,10 +14,13 @@ Rails.application.routes.draw do
       post :move_up, on: :member
     end
     resources :items do
-      post :mark_purchased, on: :member
-      get :undo_purchase, on: :member
-      post :add_needed, on: :member
-      post :subtract_needed, on: :member
+      member do
+        post :mark_purchased
+        get :undo_purchase
+        post :add_needed
+        post :subtract_needed
+      end
+      get :menu_popup, on: :member
     end
   end
 

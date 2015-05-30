@@ -20,6 +20,10 @@ module ApplicationHelper
     controller.class.to_s.gsub('Controller', '').underscore.gsub('/', '_')
   end
 
+  def fa_icon_with_text(icon, text)
+    "<i class='fa fa-#{icon}'></i> #{text}".html_safe
+  end
+
   def setup_search_form(builder)
     # from https://github.com/activerecord-hackery/ransack_demo
     fields = builder.grouping_fields builder.object.new_grouping,

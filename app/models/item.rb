@@ -12,6 +12,14 @@ class Item < ActiveRecord::Base
     aisle.nil? ? '-' : aisle.name
   end
 
+  def needed?
+    number_needed > 0
+  end
+
+  def multiple_needed?
+    number_needed > 1
+  end
+
   def increment_needed
     self.number_needed += 1
     self.save!

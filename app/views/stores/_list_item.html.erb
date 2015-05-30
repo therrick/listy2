@@ -1,21 +1,18 @@
-<tr class="item_list needed">
+<tr class="item_list <%= list_item.needed? ? 'needed' : 'not_needed' %>">
   <td>
-    <%= link_to fa_icon('check'), mark_purchased_store_item_path(@store.id, list_item.id),
-        :method => :post %>
+    <% if list_item.needed? %>
+      <%= link_to fa_icon('check'), mark_purchased_store_item_path(@store.id, list_item.id),
+                  :method => :post %>
+    <% else %>
+      <%= link_to fa_icon('shopping-cart'), add_needed_store_item_path(@store.id, list_item.id),
+                  :method => :post %>
+    <% end %>
   </td>
   <td class="name">
     <%= list_item.name %>
-    <%= list_item.number_needed > 1 ? "(x#{list_item.number_needed})" : ""%>
+    <%= "(x#{list_item.number_needed})" if list_item.multiple_needed? %>
   </td>
   <td><%= list_item.aisle_name %></td>
   <td><%= truncate(list_item.notes) %></td>
-  <td>
-    <%= link_to fa_icon('plus'),
-          add_needed_store_item_path(@store.id, list_item.id), 
-          :method => :post %>
-    <%= link_to fa_icon('minus'),
-          subtract_needed_store_item_path(@store.id, list_item.id), 
-          :method => :post %>
-    <%= link_to fa_icon('edit'), edit_store_item_path(@store.id, list_item.id) %>
-  </td>
+  <td><a onclick="popup_item_menu(<%=@store.id%>, <%=list_item.id%>);return false;" href="#"><%= fa_icon 'bars' %></a></td>
 </tr>

@@ -30,3 +30,7 @@ body.stores {
   tr.not_needed td { background-color: #eee; }
   th { border-bottom: 1px solid #777; }
 }
+
+body#stores-show .modal {
+  width: 240px;
+}
