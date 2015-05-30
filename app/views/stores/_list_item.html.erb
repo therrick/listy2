@@ -2,7 +2,8 @@
   <td>
     <% if list_item.needed? %>
       <%= link_to fa_icon('check'), mark_purchased_store_item_path(@store.id, list_item.id),
-                  :method => :post %>
+                  :method => :post,
+                  class: 'clear-row' %>
     <% else %>
       <%= link_to fa_icon('shopping-cart'), add_needed_store_item_path(@store.id, list_item.id),
                   :method => :post %>

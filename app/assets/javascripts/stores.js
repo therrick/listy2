@@ -14,6 +14,10 @@ $(document).ready( function () {
     return false;
   });
 
+  $('a.clear-row').click(function () {
+    $(this).closest('tr').hide(500);
+  });
+
   //
   // setup for item menu popup
   //
