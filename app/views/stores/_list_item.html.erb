@@ -8,11 +8,13 @@
                   :method => :post %>
     <% end %>
   </td>
-  <td class="name">
+  <td>
     <%= list_item.name %>
     <%= "(x#{list_item.number_needed})" if list_item.multiple_needed? %>
+    <% if list_item.notes.present? %>
+      <div class="item_notes"><%=list_item.notes%></div>
+    <% end %>
   </td>
   <td><%= list_item.aisle_name %></td>
-  <td><%= truncate(list_item.notes) %></td>
-  <td><a onclick="popup_item_menu(<%=@store.id%>, <%=list_item.id%>);return false;" href="#"><%= fa_icon 'bars' %></a></td>
+  <td class="text-right"><a onclick="popup_item_menu(<%=@store.id%>, <%=list_item.id%>);return false;" href="#"><%= fa_icon 'bars' %></a></td>
 </tr>
