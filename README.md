@@ -20,6 +20,7 @@ This application requires:
 cp .env.example .env # and edit to customize as necessary
 rake db:reset # drops & recreates the db + schema and populates seed data
 rake db:load:test_data # if you want some sample data to get started with
+rspec && rubocop # these should run clean
 foreman start # or just use rails s
 ```
 
