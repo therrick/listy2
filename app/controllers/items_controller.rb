@@ -56,6 +56,12 @@ class ItemsController < ApplicationController
     redirect_to store_path(@store.id)
   end
 
+  def clear_needed
+    @item.update_attributes(number_needed: 0)
+    flash[:notice] = "#{@item.name} was removed from the needed list."
+    redirect_to store_path(@store.id)
+  end
+
   def menu_popup
     render layout: false
   end

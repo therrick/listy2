@@ -3,7 +3,7 @@
     <button type="button" class="btn btn-info btn-block"><%=@item.name%><br/>Num needed: <%=@item.number_needed%></button>
     <% if @item.needed? %>
       <%= link_to fa_icon_with_text('times', 'No Longer Needed'),
-                  add_needed_store_item_path(@store.id, @item.id),
+                  clear_needed_store_item_path(@store.id, @item.id),
                   method: :post,
                   class: 'btn btn-default btn-block text-left',
                   'data-dismiss' => 'modal' %>

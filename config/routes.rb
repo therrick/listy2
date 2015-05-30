@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         get :undo_purchase
         post :add_needed
         post :subtract_needed
+        post :clear_needed
       end
       get :menu_popup, on: :member
     end
