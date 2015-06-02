@@ -9,8 +9,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    notice = find_or_create_item_with_notice
-    redirect_to store_path(@store.id), notice: notice
+    find_or_create_item_with_flash
+    redirect_to store_path(@store.id)
   end
 
   def update
@@ -80,16 +80,14 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :notes, :number_needed, :popularity, :aisle_id)
   end
 
-  def find_or_create_item_with_notice
+  def find_or_create_item_with_flash
     item = Item.find_or_initialize_by(store: @store, name: item_params[:name].downcase)
-    item.number_needed = item.number_needed + 1
-    if item.new_record?
-      notice =  "#{item.name} was created"
-      # TODO: get subnotice_create working again in this flash message
+    item.number_needed += 1
+    new = item.new_record?
+    if item.save
+      flash[:notice] = "#{item.name} #{new ? 'was created' : 'number needed was incremented'}"
     else
-      "#{item.name} number needed was incremented"
+      flash[:alert] = item.errors.full_messages.join('; ')
     end
-    item.save!
-    notice
   end
 end
