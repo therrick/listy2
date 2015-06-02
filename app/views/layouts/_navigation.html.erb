@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav">
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if @store %>
+        <% if @store && @store.id %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= fa_icon('edit')%></a>
             <ul class="dropdown-menu" role="menu">
