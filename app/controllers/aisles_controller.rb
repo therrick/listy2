@@ -1,43 +1,34 @@
 class AislesController < ApplicationController
-  respond_to :html, :xml, :json
   before_action :authenticate_user!
   before_action :set_store
   before_action :set_aisle, only: [:show, :edit, :update, :destroy]
 
   def index
     @aisles = @store.aisles.order(:position)
-    respond_with @aisles
   end
 
   def show
-    respond_with @aisle
-  end
-
-  def new
-    @aisle = @store.aisles.new
-    respond_with @aisle
   end
 
   def edit
-    respond_with @aisle
   end
 
   def create
     @aisle = @store.aisles.new(aisle_params)
     flash[:notice] = 'Successfully created aisle' if @aisle.save
-    respond_with(@aisle)
+    redirect_to store_aisles_path(@store)
   end
 
   def update
     @aisle = @store.aisles.find(params[:id])
     flash[:notice] = 'Successfully updated aisle' if @aisle.update_attributes(aisle_params)
-    respond_with(@aisle)
+    redirect_to store_aisles_path(@store)
   end
 
   def destroy
     @aisle.destroy
     flash[:notice] = 'Successfully deleted aisle'
-    respond_with(@aisle)
+    redirect_to store_aisles_path(@store)
   end
 
   # rubocop:disable Metrics/MethodLength
