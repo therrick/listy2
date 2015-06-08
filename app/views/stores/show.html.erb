@@ -16,3 +16,27 @@
 </div>
 
 <div id="menupopup-modal" class="modal fade" tabindex="-1" style="display: none;"></div>
+
+<script>
+var blocksPerRow = 4;
+
+$("body").on("keydown", function(e){
+    var thisIndex = $(".selected").index();
+    var newIndex = null;
+    if(e.keyCode === 38) {
+        // up
+      alert('up');
+       //newIndex = thisIndex - blocksPerRow;
+    }
+    else if(e.keyCode === 40) {
+        // down
+        alert('down');
+        //newIndex = thisIndex + blocksPerRow;
+    }
+    // left = 37
+    // right = 39
+    //if(newIndex !== null) {
+    //    $(".test").eq(newIndex).addClass("selected").siblings().removeClass("selected");
+    //}
+ });
+ </script>

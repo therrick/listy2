@@ -12,24 +12,50 @@ namespace :db do
 
     desc 'Add test aisles'
     task test_aisles: [:test_stores] do
-      puts 'Adding test stores'
-      Aisle.find_or_create_by(store: Store.first, name: 'aisle1').
-        update_attributes(position: 0, description: 'aisle 1 description')
-      Aisle.find_or_create_by(store: Store.first, name: 'aisle2').
-        update_attributes(position: 1, description: 'aisle 2 description')
+      puts 'Adding test aisles'
+      Aisle.find_or_create_by(store: Store.first, name: 'A').
+        update_attributes(position: 0, description: 'produce')
+      Aisle.find_or_create_by(store: Store.first, name: 'B').
+        update_attributes(position: 1, description: 'dry goods')
+      Aisle.find_or_create_by(store: Store.first, name: 'C').
+        update_attributes(position: 2, description: 'refrigerated')
+      Aisle.find_or_create_by(store: Store.first, name: 'D').
+        update_attributes(position: 2, description: 'frozen')
     end
 
     desc 'Add test items'
     task test_items: [:test_aisles] do
       puts 'Adding test items'
-      Item.find_or_create_by(store: Store.first, name: 'milk').
-        update_attributes(number_needed: 1, popularity: 5, notes: 'skim')
-      Item.find_or_create_by(store: Store.first, name: 'bread').
-        update_attributes(number_needed: 0, popularity: 2, aisle: Aisle.first)
-      Item.find_or_create_by(store: Store.first, name: 'eggs').
-        update_attributes(number_needed: 0, popularity: 3, aisle: Aisle.first)
-      Item.find_or_create_by(store: Store.first, name: 'cereal').
-        update_attributes(number_needed: 0, popularity: 3, aisle: Aisle.second)
+      store = Store.first
+      produce_aisle = store.aisles.find_by(description: 'produce')
+      dry_goods_aisle = store.aisles.find_by(description: 'dry goods')
+      refrigerated_aisle = store.aisles.find_by(description: 'refrigerated')
+      frozen_aisle = store.aisles.find_by(description: 'frozen')
+      store.items.find_or_create_by(name: 'milk').
+        update_attributes(number_needed: 1,
+                          popularity: rand(5),
+                          aisle: refrigerated_aisle,
+                          notes: 'skim')
+      store.items.find_or_create_by(name: 'bread').
+        update_attributes(popularity: rand(5), aisle: dry_goods_aisle)
+      store.items.find_or_create_by(name: 'eggs').
+        update_attributes(popularity: rand(5), aisle: refrigerated_aisle)
+      store.items.find_or_create_by(name: 'cheese').
+        update_attributes(popularity: rand(5), aisle: refrigerated_aisle)
+      store.items.find_or_create_by(name: 'cereal').
+        update_attributes(popularity: rand(5), aisle: dry_goods_aisle)
+      store.items.find_or_create_by(name: 'ice cream').
+        update_attributes(popularity: rand(5), aisle: dry_goods_aisle)
+      store.items.find_or_create_by(name: 'bananas').
+        update_attributes(popularity: rand(5), aisle: produce_aisle)
+      store.items.find_or_create_by(name: 'apples').
+        update_attributes(popularity: rand(5), aisle: produce_aisle)
+      store.items.find_or_create_by(name: 'crackers').
+        update_attributes(popularity: rand(5), aisle: dry_goods_aisle)
+      store.items.find_or_create_by(name: 'cookies').
+        update_attributes(popularity: rand(5), aisle: dry_goods_aisle)
+      store.items.find_or_create_by(name: 'ice cream').
+        update_attributes(popularity: rand(5), aisle: frozen_aisle)
     end
   end
 end
