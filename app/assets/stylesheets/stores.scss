@@ -7,6 +7,9 @@ body.stores {
   tr.needed td { background-color: #fff; }
   tr.not_needed td { background-color: #eee; }
   th { border-bottom: 1px solid #777; }
+  tr.item_list { display: none; }
+  tr.item_list.found { display: table-row; }
+  tr.item_list.selected { border-left: 1px solid red; }
 }
 
 body#stores-show .modal {

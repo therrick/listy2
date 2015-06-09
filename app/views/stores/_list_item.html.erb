@@ -1,4 +1,4 @@
-<tr class="item_list <%= list_item.needed? ? 'needed' : 'not_needed' %>">
+<tr class="item_list found <%= list_item.needed? ? 'needed' : 'not_needed' %>">
   <td>
     <% if list_item.needed? %>
       <%= link_to fa_icon('check'), mark_purchased_store_item_path(@store.id, list_item.id),
