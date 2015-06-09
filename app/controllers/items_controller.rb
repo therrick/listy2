@@ -29,36 +29,32 @@ class ItemsController < ApplicationController
     original_number_needed = @item.number_needed
     @item.mark_purchased
 
-    notice = "#{@item.name} was marked purchased. " +
-             view_context.link_to('undo',
-                                  action: 'undo_purchase',
-                                  number_needed: original_number_needed)
-    subnotice = render_to_string partial: 'subnotice_purchase'
-    redirect_to store_path(@store.id),
-                notice: notice + subnotice,
-                flash: { html_safe: true }
+    notice = "#{@item.name} was marked purchased. "
+    flash[:previous_item_id] = @item.id
+    flash[:previous_number_needed] = original_number_needed
+    redirect_to store_path(@store.id), notice: notice
   end
 
   def undo_purchase
     @item.undo_purchase(params[:number_needed].to_i)
-    redirect_to store_path(@store.id)
+    redirect_to store_path(@store.id), notice: 'undone per your request'
   end
 
   def add_needed
     @item.increment_needed
-    flash[:notice] = "#{@item.name} number needed was incremented."
+    flash[:notice] = "#{@item.name} number needed was incremented"
     redirect_to store_path(@store.id)
   end
 
   def subtract_needed
     @item.decrement_needed
-    flash[:notice] = "#{@item.name} number needed was decremented."
+    flash[:notice] = "#{@item.name} number needed was decremented"
     redirect_to store_path(@store.id)
   end
 
   def clear_needed
     @item.update_attributes(number_needed: 0)
-    flash[:notice] = "#{@item.name} was removed from the needed list."
+    flash[:notice] = "#{@item.name} was removed from the needed list"
     redirect_to store_path(@store.id)
   end
 

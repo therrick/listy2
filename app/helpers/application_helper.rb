@@ -20,6 +20,10 @@ module ApplicationHelper
     controller.class.to_s.gsub('Controller', '').underscore.gsub('/', '_')
   end
 
+  def fa_icon_with_tooltip(icon, tooltip)
+    "<i class='fa fa-#{icon}' title='#{tooltip}'></i>".html_safe
+  end
+
   def fa_icon_with_text(icon, text)
     "<i class='fa fa-#{icon}'></i> #{text}".html_safe
   end

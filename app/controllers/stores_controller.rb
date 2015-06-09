@@ -9,6 +9,7 @@ class StoresController < ApplicationController
   end
 
   def show
+    @previous_item, @previous_number_needed = set_previous_from_flash
     @list_items = @store.items.needed.order_by_aisles
     @other_items = @store.items.not_needed
     @other_items = apply_sort(@other_items)
@@ -60,6 +61,11 @@ class StoresController < ApplicationController
 
   def store_params
     params.require(:store).permit(:name, :hidden)
+  end
+
+  def set_previous_from_flash
+    [@store.items.find_by(id: flash[:previous_item_id]),
+     flash[:previous_number_needed]]
   end
 
   def apply_sort(items)

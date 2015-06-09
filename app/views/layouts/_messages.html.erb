@@ -3,7 +3,28 @@
   <% if msg.is_a?(String) %>
     <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <div id="flash_<%=name%>">
+        <%= msg %>
+
+        <% if @previous_item && @previous_number_needed %>
+          <span class="undo-flash">
+            <%= link_to fa_icon_with_tooltip('undo', 'undo'),
+                        undo_purchase_store_item_path(
+                          @previous_item.store.id,
+                          @previous_item.id,
+                          number_needed: @previous_number_needed) %>
+          </span>
+        <% end %>
+        <% if @previous_item &&
+                @previous_item.store.aisles.count > 0 &&
+                @previous_item.aisle.nil? %>
+          <div class="subnotice">
+            <%= @previous_item.name %> doesn't have an assigned aisle yet.
+            <%= link_to 'Why not assign one now to make it easier to find next time?',
+                  edit_store_item_path(@previous_item.store.id, @previous_item.id) %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 <% end %>

@@ -43,9 +43,12 @@ h1.with_submenu {
 #flash_notice {
   a {
     color: lightblue;
+    font-weight: bold;
     text-decoration: underline;
   }
+  i.fa { font-size: 1.2em; }
 }
+
 
 .form-actions {
   input {
