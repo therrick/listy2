@@ -40,7 +40,7 @@ $(document).ready( function () {
     }
     else if(e.keyCode === 38) {
       // up
-      console.log("up.  selectedIndex=" + selectedIndex)
+      // console.log("up.  selectedIndex=" + selectedIndex)
       if (selectedIndex <= 1) {
         newIndex = maxIndex;
       } else {
@@ -57,29 +57,30 @@ $(document).ready( function () {
       }
     }
     else if(e.keyCode === 40) {
-        // down
-        console.log("down.  selectedIndex=" + selectedIndex)
-        if (selectedIndex >= maxIndex) {
-          newIndex = 1;
-        } else {
-          newIndex = selectedIndex + 1;
+      // down
+      // console.log("down.  selectedIndex=" + selectedIndex)
+      if (selectedIndex >= maxIndex) {
+        newIndex = 1;
+      } else {
+        newIndex = selectedIndex + 1;
+      }
+      while (!$($("tr.item_list")[newIndex - 1]).hasClass("found")) {
+        if (newIndex == selectedIndex) {
+          break;
         }
-        while (!$($("tr.item_list")[newIndex - 1]).hasClass("found")) {
-          if (newIndex == selectedIndex) {
-            break;
-          }
-          newIndex += 1;
-          if (newIndex > maxIndex) {
-            newIndex = 0;
-          }
+        newIndex += 1;
+        if (newIndex > maxIndex) {
+          newIndex = 0;
         }
+      }
     }
     if (newIndex !== null) {
-      console.log("newIndex=" + newIndex)
-      $("tr.item_list.selected").removeClass("selected")
-      $($("tr.item_list")[newIndex - 1]).addClass("selected")
+      // console.log("newIndex=" + newIndex)
+      $("tr.item_list.selected").removeClass("selected");
+      $($("tr.item_list")[newIndex - 1]).addClass("selected");
       selectedValue = $($("tr.item_list.selected")[0].children[1]).html().replace(/<div.*\/div>/,'').trim();
       $('input#item_name')[0].value = selectedValue;
+      $('html,body').animate({scrollTop: $('tr.selected').offset().top-60}, 300);
       e.preventDefault();
     }
     // left = 37
