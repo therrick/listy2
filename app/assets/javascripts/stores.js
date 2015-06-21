@@ -88,19 +88,90 @@ $(document).ready( function () {
    });
 });
 
-function popup_item_menu(store_id, item_id) {
-  // create the backdrop and wait for next modal to be triggered
-  $('body').modalmanager('loading');
+function popup_item_menu(store_id, item_id, name, num_needed) {
+  var modal = $('#menupopup-modal');
+  var modalBody = document.createElement('div');
+  modalBody.setAttribute('class', 'modal-body');
 
-  var $modal = $('#menupopup-modal');
+  var btnGroup = document.createElement('div');
+  btnGroup.setAttribute('class', 'btn-group-vertical btn-block');
+  btnGroup.setAttribute('role', 'group');
 
-  setTimeout(function(){
-    url = '/stores/' + store_id + '/items/' + item_id + '/menu_popup';
-    $modal.load(url, '', function(){
-      $modal.modal();
-    });
-  }, 1000);
+  var title = document.createElement('button');
+  title.setAttribute('type', 'button');
+  title.setAttribute('class', 'btn btn-info btn-block');
+  title.innerHTML = name + '<br/>Num needed: ' + num_needed;
+
+  btnGroup.appendChild(title);
+  if (num_needed >= 1) {
+    btnGroup.appendChild(
+        make_popup_link(
+            { url: '/stores/' + store_id + '/items/' + item_id + '/clear_needed',
+              method: 'post',
+              icon: 'times',
+              text: 'No Longer Needed' }));
+    btnGroup.appendChild(
+        make_popup_link(
+            { url: '/stores/' + store_id + '/items/' + item_id + '/add_needed',
+              method: 'post',
+              icon: 'plus',
+              text: 'Increment Needed' }));
+  } else {
+    btnGroup.appendChild(
+        make_popup_link(
+            { url: '/stores/' + store_id + '/items/' + item_id + '/add_needed',
+              method: 'post',
+              icon: 'plus',
+              text: 'Add to Needed List' }));
+  }
+  if (num_needed > 1) {
+    btnGroup.appendChild(
+        make_popup_link(
+            { url: '/stores/' + store_id + '/items/' + item_id + '/subtract_needed',
+              method: 'post',
+              icon: 'minus',
+              text: 'Decrement Needed' }));
+  }
+  btnGroup.appendChild(
+      make_popup_link(
+          { url: '/stores/' + store_id + '/items/' + item_id + '/edit',
+            method: 'get',
+            icon: 'edit',
+            text: 'Edit' }));
+  btnGroup.appendChild(
+      make_popup_link(
+          { url: '/stores/' + store_id + '/items/' + item_id,
+            confirm: 'Are you sure you want to permanently delete ' + name,
+            method: 'delete',
+            icon: 'trash',
+            text: 'Delete' }));
+  btnGroup.appendChild(
+      make_popup_link(
+          { icon: 'times-circle',
+            text: 'Cancel' }));
+  modalBody.appendChild(btnGroup);
+  modal.html(modalBody);
+  modal.modal('show');
 }
+
+function make_popup_link(attributes) {
+  var link = document.createElement('a');
+  link.setAttribute('class', 'btn btn-default btn-block text-left');
+  if (typeof attributes.confirm !== 'undefined') {
+    link.setAttribute('data-confirm', attributes.confirm);
+  }
+  if (typeof attributes.method !== 'undefined') {
+    link.setAttribute('data-method', attributes.method);
+  }
+  if (typeof attributes.url !== 'undefined') {
+    link.setAttribute('href', attributes.url);
+  }
+  link.setAttribute('data-dismiss', 'modal');
+  link.setAttribute('rel', 'nofollow');
+  link.innerHTML = '<i class="fa fa-' + attributes.icon + '"></i> ' + attributes.text;
+  return link;
+}
+
 
 function filter_items(selector, query) {
   query =   $.trim(query); //trim white space

@@ -17,5 +17,5 @@
     <% end %>
   </td>
   <td><%= list_item.aisle_name %></td>
-  <td class="text-right"><a onclick="popup_item_menu(<%=@store.id%>, <%=list_item.id%>);return false;" href="#"><%= fa_icon 'bars' %></a></td>
+  <td class="text-right"><a onclick="popup_item_menu(<%=@store.id%>, <%=list_item.id%>, '<%=list_item.name%>', <%=list_item.number_needed%>);return false;" href="#"><%= fa_icon 'bars' %></a></td>
 </tr>
