@@ -81,9 +81,15 @@ class ItemsController < ApplicationController
     item.number_needed += 1
     new = item.new_record?
     if item.save
-      flash[:notice] = "#{item.name} #{new ? 'was created' : 'number needed was incremented'}"
+      set_flash_from_item(item, new)
     else
       flash[:alert] = item.errors.full_messages.join('; ')
     end
+  end
+
+  def set_flash_from_item(item, new)
+    flash[:notice] = "#{item.name} #{new ? 'was created' : 'number needed was incremented'}"
+    flash[:previous_item_id] = item.id
+    flash[:previous_item_is_new] = true
   end
 end

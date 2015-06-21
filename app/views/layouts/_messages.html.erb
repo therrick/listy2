@@ -15,14 +15,19 @@
                           number_needed: @previous_number_needed) %>
           </span>
         <% end %>
-        <% if @previous_item &&
-                @previous_item.store.aisles.count > 0 &&
-                @previous_item.aisle.nil? %>
-          <div class="subnotice">
-            <%= @previous_item.name %> doesn't have an assigned aisle yet.
-            <%= link_to 'Why not assign one now to make it easier to find next time?',
-                  edit_store_item_path(@previous_item.store.id, @previous_item.id) %>
-          </div>
+        <% if @previous_item %>
+          <% if @previous_item_is_new %>
+            <div class="subnotice">
+              <%= link_to 'You can edit it now to add notes or assign an aisle.',
+                    edit_store_item_path(@previous_item.store.id, @previous_item.id) %>
+            </div>
+          <% elsif @previous_item.store.aisles.count > 0 && @previous_item.aisle.nil? %>
+            <div class="subnotice">
+              <%= @previous_item.name %> doesn't have an assigned aisle yet.
+              <%= link_to 'Why not assign one now to make it easier to find next time?',
+                    edit_store_item_path(@previous_item.store.id, @previous_item.id) %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
