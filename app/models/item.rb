@@ -6,7 +6,9 @@ class Item < ActiveRecord::Base
 
   scope :needed, -> { includes(:aisle).where('items.number_needed > 0') }
   scope :not_needed, -> { includes(:aisle).where('items.number_needed = 0') }
-  scope :order_by_aisles, -> { includes(:aisle).order('aisles.position, items.name') }
+  scope :order_by_aisles, (lambda do
+    references(:aisle).order('coalesce(aisles.position,0), items.name')
+  end)
 
   def aisle_name
     aisle.nil? ? '-' : aisle.name
