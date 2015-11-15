@@ -24,9 +24,14 @@
           <% elsif @previous_item.store.aisles.count > 0 && @previous_item.aisle.nil? %>
             <div class="subnotice">
               <%= @previous_item.name %> doesn't have an assigned aisle yet.
-              <%= link_to 'Why not assign one now to make it easier to find next time?',
+              <%= link_to 'Why not assign one now?',
                     edit_store_item_path(@previous_item.store.id, @previous_item.id) %>
             </div>
+          <% else %>
+            <span class="edit-flash">
+              <%= link_to fa_icon_with_tooltip('edit', 'edit'),
+                          edit_store_item_path(@previous_item.store.id, @previous_item.id) %>
+            </span>
           <% end %>
         <% end %>
       </div>

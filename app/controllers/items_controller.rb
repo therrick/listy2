@@ -43,18 +43,21 @@ class ItemsController < ApplicationController
   def add_needed
     @item.increment_needed
     flash[:notice] = "#{@item.name} number needed was incremented"
+    flash[:previous_item_id] = @item.id
     redirect_to store_path(@store.id)
   end
 
   def subtract_needed
     @item.decrement_needed
     flash[:notice] = "#{@item.name} number needed was decremented"
+    flash[:previous_item_id] = @item.id
     redirect_to store_path(@store.id)
   end
 
   def clear_needed
     @item.update_attributes(number_needed: 0)
     flash[:notice] = "#{@item.name} was removed from the needed list"
+    flash[:previous_item_id] = @item.id
     redirect_to store_path(@store.id)
   end
 
@@ -86,6 +89,6 @@ class ItemsController < ApplicationController
   def set_flash_from_item(item, new)
     flash[:notice] = "#{item.name} #{new ? 'was created' : 'number needed was incremented'}"
     flash[:previous_item_id] = item.id
-    flash[:previous_item_is_new] = true
+    flash[:previous_item_is_new] = true if new
   end
 end
