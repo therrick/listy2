@@ -18,6 +18,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
+//= require select2
 //= require_tree .
 //= require turbolinks
-

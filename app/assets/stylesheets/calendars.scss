@@ -1,0 +1,18 @@
+.meal-time-title {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+}
+
+.meal-time-display {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+}
+
+.meal-time-form {
+  display: none;
+  li.select2-search-field input {
+    min-width: 200px !important;
+  }
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524181407) do
+ActiveRecord::Schema.define(version: 20151115115202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,23 @@ ActiveRecord::Schema.define(version: 20150524181407) do
 
   add_index "aisles", ["store_id"], name: "index_aisles_on_store_id", using: :btree
 
+  create_table "calendars", force: :cascade do |t|
+    t.date     "date"
+    t.string   "meal_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "components", force: :cascade do |t|
+    t.string   "name"
+    t.string   "link"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "components", ["name"], name: "index_components_on_name", using: :btree
+
   create_table "items", force: :cascade do |t|
     t.integer  "store_id"
     t.integer  "aisle_id"
@@ -40,6 +57,16 @@ ActiveRecord::Schema.define(version: 20150524181407) do
 
   add_index "items", ["aisle_id"], name: "index_items_on_aisle_id", using: :btree
   add_index "items", ["store_id"], name: "index_items_on_store_id", using: :btree
+
+  create_table "meals", force: :cascade do |t|
+    t.integer  "component_id"
+    t.integer  "calendar_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "meals", ["calendar_id"], name: "index_meals_on_calendar_id", using: :btree
+  add_index "meals", ["component_id"], name: "index_meals_on_component_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
     t.integer  "user_id"
@@ -89,5 +116,7 @@ ActiveRecord::Schema.define(version: 20150524181407) do
   add_foreign_key "aisles", "stores"
   add_foreign_key "items", "aisles"
   add_foreign_key "items", "stores"
+  add_foreign_key "meals", "calendars"
+  add_foreign_key "meals", "components"
   add_foreign_key "stores", "users"
 end

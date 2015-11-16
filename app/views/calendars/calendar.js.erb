@@ -1,0 +1,9 @@
+$("ul.errors").html("");
+<% if @calendar.errors.any? %>
+  <% @calendar.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $("#meal-time-<%=@calendar.date%>-<%=@calendar.meal_time%>").html("<%= escape_javascript(render 'calendar', calendar: @calendar) %>");
+  $('.component-list').select2({ tags:[<%= Component.all.map(&:name).map(&:inspect).join(',').html_safe %>] });
+<% end %>

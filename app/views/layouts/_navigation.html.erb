@@ -7,22 +7,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Stores', root_path, class: 'navbar-brand' %>
     </div>
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <% if @store && @store.id %>
+      <% if user_signed_in? %>
+        <ul class="nav navbar-nav navbar-left">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= fa_icon('edit')%></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Stores</a>
             <ul class="dropdown-menu" role="menu">
-              <li><%= link_to 'Edit store', edit_store_path(@store) %></li>
-              <li><%= link_to 'Edit aisles', store_aisles_path(@store) %></li>
+              <% current_user.stores.each do |store| %>
+                <li><%= link_to store.name, store_path(store) %></li>
+              <% end %>
+              <li><%= link_to 'Add new store', new_store_path %></li>
             </ul>
           </li>
-        <% end %>
-        <% if user_signed_in? %>
+          <li><%= link_to 'Meal Plan', calendars_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if @store && @store.id %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= fa_icon('edit')%></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'Edit store', edit_store_path(@store) %></li>
+                <li><%= link_to 'Edit aisles', store_aisles_path(@store) %></li>
+              </ul>
+            </li>
+          <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= fa_icon('user')%></a>
             <ul class="dropdown-menu" role="menu">
@@ -33,10 +42,12 @@
               <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
             </ul>
           </li>
-        <% else %>
-          <li><%= link_to 'Sign in', new_user_session_path %></li>
-        <% end %>
       </ul>
+      <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+        </ul>
+      <% end %>
     </div>
   </div>
 </nav>

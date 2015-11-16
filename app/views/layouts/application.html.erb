@@ -19,5 +19,8 @@
        <%= render 'layouts/messages' %>
        <%= yield %>
     </main>
+    <script type="text/javascript">
+      <%= yield(:scripts) %>
+    </script>
   </body>
 </html>

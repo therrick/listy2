@@ -24,5 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :calendars
+  resources :components
+
   root to: 'stores#index'
 end

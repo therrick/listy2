@@ -1,16 +1,18 @@
-@import "bootstrap-sprockets";
-@import "bootswatch/yeti/variables";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootswatch/yeti/variables';
+@import 'bootstrap';
 
 $font-size-base: 18px !default;
 $font-size-small: 16px;
 
-@import "bootswatch/yeti/bootswatch";
+@import 'bootswatch/yeti/bootswatch';
 
 // vendor additions
-@import "font-awesome";
-@import "bootstrap-modal-bs3patch";
-@import "bootstrap-modal";
+@import 'font-awesome';
+@import 'bootstrap-modal-bs3patch';
+@import 'bootstrap-modal';
+@import 'select2';
+@import 'select2-bootstrap';
 
 // our css
 @import 'auth';
@@ -18,3 +20,5 @@ $font-size-small: 16px;
 @import 'stores';
 @import 'aisles';
 @import 'items';
+@import 'calendars';
+@import 'components';

@@ -1,0 +1,19 @@
+<div class='meal-time-title'>
+  <a href='#' onclick='toggleMealTimeForm(this);return false;'><%= calendar.meal_time %>:</a>
+</div>
+<div class='meal-time-display'>
+  <%= calendar.component_list.join(', ') %>
+</div>
+<div class='meal-time-form'>
+  <%= form_for calendar, remote: true, class: 'calendar-components' do |f| %>
+    <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
+    <%= f.hidden_field :id, value: calendar.id %>
+    <%= f.hidden_field :date, value: calendar.date %>
+    <%= f.hidden_field :meal_time, value: calendar.meal_time %>
+    <%= f.text_field :component_list, value: calendar.component_list.join(', '),
+         placeholder: 'Select or add new',
+         id: "#{calendar.date}_#{calendar.meal_time}_component_list",
+         class: 'form-control component-list' %>
+     <%= f.submit 'save', class: 'button-xs' %>
+  <% end %>
+</div>

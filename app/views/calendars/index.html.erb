@@ -1,0 +1,33 @@
+<h1>Meal Plan</h1>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th class='col3'>Date</th>
+      <th class='col9'>Meal time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calendars.group_by(&:date).each do |day, calendars| %>
+      <tr>
+        <td class='col3'>
+          <div class='weekday'><%= Date::DAYNAMES[day.wday] %></div>
+          <div class='date'><%= day.strftime('%F') %></div>
+        </td>
+        <td class='col9'>
+          <% calendars.each do |calendar| %>
+            <div id='meal-time-<%=calendar.date%>-<%=calendar.meal_time%>'>
+              <%= render 'calendar', calendar: calendar %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% content_for :scripts do %>
+$(function() {
+  $('.component-list').select2({ tags:[<%= Component.all.map(&:name).map(&:inspect).join(',').html_safe %>] });
+});
+<% end %>

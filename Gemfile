@@ -25,6 +25,7 @@ gem 'pg'
 gem 'puma'
 gem 'simple_form'
 gem 'upmin-admin'
+gem 'select2-rails'
 group :development do
   gem 'rack-mini-profiler', require: false
   gem 'better_errors'
