@@ -31,7 +31,6 @@ class CalendarsController < ApplicationController
 
   def update
     # TODO: deal with errors in ajax saves
-    # TODO: next/prev week
     @calendar.update_attributes(calendar_params)
     render 'calendar'
   end

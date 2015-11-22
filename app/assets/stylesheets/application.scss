@@ -13,6 +13,7 @@ $font-size-small: 16px;
 @import 'bootstrap-modal';
 @import 'select2';
 @import 'select2-bootstrap';
+@import "dataTables/bootstrap/3/jquery.dataTables.bootstrap";
 
 // our css
 @import 'auth';
