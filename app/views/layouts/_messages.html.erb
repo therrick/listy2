@@ -17,6 +17,11 @@
         <% end %>
         <% if @previous_item %>
           <% if @previous_item_is_new %>
+            <span class="undo-flash">
+              <%= link_to fa_icon_with_tooltip('undo', 'undo'),
+                          store_item_path(@store, @previous_item),
+                          method: :delete %>
+            </span>
             <div class="subnotice">
               <%= link_to 'You can edit it now to add notes or assign an aisle.',
                     edit_store_item_path(@previous_item.store.id, @previous_item.id) %>
