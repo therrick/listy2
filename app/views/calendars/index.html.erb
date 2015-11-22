@@ -1,12 +1,10 @@
 <h1>Meal Plan</h1>
+<div class='weeknav'>
+  <%= link_to '< prev week', calendars_path(week: @week - 1) %>
+  &middot;
+  <%= link_to 'next week >', calendars_path(week: @week + 1) %>
+</div>
 <table class='table table-striped'>
-  <thead>
-    <tr>
-      <th class='col3'>Date</th>
-      <th class='col9'>Meal time</th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @calendars.group_by(&:date).each do |day, calendars| %>
       <tr>

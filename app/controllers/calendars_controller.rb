@@ -4,6 +4,7 @@ class CalendarsController < ApplicationController
 
   def index
     @calendars = []
+    @week = params[:week].to_i
     calendars = Calendar.where(date: date_range).to_a
     date_range.each do |date|
       %w(B L D).each do |meal_time|
@@ -54,7 +55,7 @@ class CalendarsController < ApplicationController
   end
 
   def date_range
-    begin_date = params[:begin_date].presence || Time.zone.today
+    begin_date = Time.zone.today + @week.weeks
     begin_date..(begin_date + 6)
   end
 end
