@@ -10,6 +10,8 @@ body.stores {
   tr.item_list { display: none; }
   tr.item_list.found { display: table-row; }
   tr.item_list.selected { border-left: 1px solid red; }
+  .multiple_needed { font-weight: bold }
+  .item_temp_note { font-style: italic }
 }
 
 body#stores-show .modal {

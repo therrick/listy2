@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :notes, :number_needed, :popularity, :aisle_id)
+    params.require(:item).permit(:name, :notes, :temp_note, :number_needed, :popularity, :aisle_id)
   end
 
   def find_or_create_item_with_flash

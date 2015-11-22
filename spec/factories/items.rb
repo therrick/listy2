@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item do
-    store nil
+    association :store
     aisle nil
     name 'MyString'
     notes 'MyString'

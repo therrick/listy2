@@ -3,6 +3,8 @@ class Item < ActiveRecord::Base
   belongs_to :aisle
   validates :store, presence: true
   validates :name, presence: true, uniqueness: { scope: :store_id }
+  strip_attributes
+  after_validation :maybe_clear_temp_note
 
   scope :needed, -> { includes(:aisle).where('items.number_needed > 0') }
   scope :not_needed, -> { includes(:aisle).where('items.number_needed = 0') }
@@ -42,5 +44,9 @@ class Item < ActiveRecord::Base
     self.popularity -= number_needed
     self.number_needed = number_needed
     self.save!
+  end
+
+  def maybe_clear_temp_note
+    self.temp_note = nil if self.number_needed == 0
   end
 end

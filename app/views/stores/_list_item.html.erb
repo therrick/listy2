@@ -11,9 +11,12 @@
   </td>
   <td>
     <%= list_item.name %>
-    <%= "(x#{list_item.number_needed})" if list_item.multiple_needed? %>
+    <span class="multiple_needed"><%= "(x#{list_item.number_needed})" if list_item.multiple_needed? %></span>
     <% if list_item.notes.present? %>
-      <div class="item_notes"><%=list_item.notes%></div>
+      <div class="item_notes"><%= list_item.notes%></div>
+    <% end %>
+    <% if list_item.temp_note.present? %>
+      <div class="item_temp_note"><%= list_item.temp_note %></div>
     <% end %>
   </td>
   <td><%= list_item.aisle_name %></td>
