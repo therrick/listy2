@@ -1,8 +1,10 @@
-<h1>Meal Plan</h1>
-<div class='weeknav'>
-  <%= link_to '< prev week', calendars_path(week: @week - 1) %>
-  &middot;
-  <%= link_to 'next week >', calendars_path(week: @week + 1) %>
+<h1 class="with_submenu">
+  Meal Plan
+</h1>
+<div class="submenu">
+  <%= link_to '<< ', calendars_path(week: @week - 1) %>
+  week
+  <%= link_to ' >>', calendars_path(week: @week + 1) %>
 </div>
 <table class='table table-striped'>
   <tbody>
