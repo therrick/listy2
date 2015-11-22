@@ -2,7 +2,7 @@
   <a href='#' onclick='toggleMealTimeForm(this);return false;'><%= calendar.meal_time %>:</a>
 </div>
 <div class='meal-time-display'>
-  <%= calendar.component_list.join(', ') %>
+  <%= calendar.components.map{ |c| link_to c.name, component_path(c, return_to: request.fullpath) }.join(', ').html_safe %>
 </div>
 <div class='meal-time-form'>
   <%= form_for calendar, remote: true, class: 'calendar-components' do |f| %>

@@ -1,18 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @component.name %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @component.type %>
-</p>
+<h1><%= @component.name %></h1>
 
 <p>
   <strong>Link:</strong>
-  <%= @component.link %>
+  <%= link_to @component.link if @component.link.present? %>
 </p>
 
 <p>
@@ -20,5 +10,5 @@
   <%= @component.note %>
 </p>
 
-<%= link_to 'Edit', edit_component_path(@component) %> |
-<%= link_to 'Back', components_path %>
+<%= link_to 'edit', edit_component_path(@component) %> |
+<%= link_to 'back', params[:return_to] || components_path %>

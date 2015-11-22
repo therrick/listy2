@@ -12,9 +12,19 @@ RSpec.describe Component, type: :model do
 
   describe '.clean_unreferenced' do
     it 'deletes unreferenced components' do
-      comp1 = create(:component, name: 'comp1')
+      comp1 = create(:component, name: 'comp1', link: nil, note: nil)
       Component.clean_unreferenced
       expect(Component.find_by(id: comp1.id)).to eq nil
+    end
+    it 'preserves unreferenced components with link' do
+      comp1 = create(:component, name: 'comp1', link: 'test', note: nil)
+      Component.clean_unreferenced
+      expect(Component.find_by(id: comp1.id)).to eq comp1
+    end
+    it 'preserves unreferenced components with note' do
+      comp1 = create(:component, name: 'comp1', link: nil, note: 'test')
+      Component.clean_unreferenced
+      expect(Component.find_by(id: comp1.id)).to eq comp1
     end
   end
 end
