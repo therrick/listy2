@@ -38,7 +38,8 @@ function isXS(){
 })(jQuery);
 
 // clicking links should give immediate feedback
-$('a').click(function () {
-  $(this).fadeTo(100,0.2).delay(4000).fadeTo(100,1.0);
+$(document).ready( function () {
+  $('a').click(function () {
+    $(this).fadeTo(100,0.2).delay(4000).fadeTo(100,1.0);
+  });
 });
-
