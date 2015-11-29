@@ -78,7 +78,7 @@ $(document).ready( function () {
       // console.log("newIndex=" + newIndex)
       $("tr.item_list.selected").removeClass("selected");
       $($("tr.item_list")[newIndex - 1]).addClass("selected");
-      selectedValue = $($("tr.item_list.selected")[0].children[1]).html().replace(/<div.*\/div>/,'').trim();
+      selectedValue = $($("tr.item_list.selected")[0].children[1]).text().trim();
       $('input#item_name')[0].value = selectedValue;
       $('html,body').animate({scrollTop: $('tr.selected').offset().top-60}, 300);
       e.preventDefault();
