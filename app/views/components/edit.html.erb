@@ -1,5 +1,7 @@
-<h1>edit @component.name</h1>
+<h1>edit <%= @component.name %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'back', components_path %>
+<%= link_to 'back to components', components_path %>
+|
+<%= link_to 'back to meal plan', calendars_path %>
