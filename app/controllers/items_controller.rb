@@ -15,7 +15,11 @@ class ItemsController < ApplicationController
 
   def update
     @item = @store.items.find(params[:id])
-    flash[:notice] = "#{@item.name} was updated" if @item.update_attributes(item_params)
+    if @item.update_attributes(item_params)
+      flash[:notice] = "#{@item.name} was updated"
+    else
+      flash[:error] = "#{@item.name} was not updated. Error: #{@item.errors.full_messages}"
+    end
     redirect_to store_path(@store.id)
   end
 
