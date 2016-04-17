@@ -45,7 +45,7 @@ class ComponentsController < ApplicationController
   def destroy
     @component.destroy
     respond_to do |format|
-      format.html { redirect_to components_url, notice: 'Component was successfully destroyed.' }
+      format.html { redirect_to components_url, notice: 'Component was successfully deleted.' }
       format.json { head :no_content }
     end
   end
