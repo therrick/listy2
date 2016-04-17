@@ -11,5 +11,7 @@
 </p>
 
 <%= link_to 'edit', edit_component_path(@component) %> |
-<%= link_to 'delete', @component, method: :delete, data: { confirm: "Delete #{@component.name}. Are you sure?" } %> |
+<%= link_to 'delete', @component, method: :delete,
+                                  data: { confirm: "Delete #{@component.name}?",
+                                          commit: 'Delete' } %> |
 <%= link_to 'back', params[:return_to] || components_path %>

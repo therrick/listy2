@@ -20,5 +20,6 @@
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 //= require select2
+//= require data-confirm-modal
 //= require_tree .
 //= require turbolinks
